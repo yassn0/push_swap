@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yfradj <yassinfradj28@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:45:43 by yfradj            #+#    #+#             */
-/*   Updated: 2024/11/29 17:15:31 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/04 17:15:53 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,19 @@ void				sb(s_list **begin_lb);
 void				pa(s_list **begin_la, s_list **begin_lb);
 void				pb(s_list **begin_la, s_list **begin_lb);
 void				ra(s_list **begin_la);
+void				rb(s_list **begin_lb);
 void				rra(s_list **begin_la);
-void				rra(s_list **begin_la);
+void				rrb(s_list **begin_lb);
+int					is_sorted_dec(s_list **begin_list);
+int					is_sorted(s_list **begin_list);
+int					calcul_index(s_list **begin_list, int n);
+int					closer_to_the_beginning_or_the_end(s_list **begin_list,
+						int n);
+int					cost_sort_lb_for_pb(s_list **lb, int n);
+int					calcul_cost(s_list **begin_la, s_list **begin_lb, int n);
+int					find_max(s_list **begin_lst);
+int					find_target_index(s_list **begin_lst, int target);
+void				sort_stack_b(s_list **begin_lb);
+int	n_min_cost(s_list **begin_la, s_list **begin_lb);
 
 #endif

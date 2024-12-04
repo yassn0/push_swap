@@ -61,7 +61,7 @@ char	**get_split(int ac, char **av)
 	char *str;
 
 	if (ac == 2)
-		split = ft_split(av[1], ' '); // free after
+		split = ft_split(av[1], ' '); // free after + securite
 	else
 	{
 		str = create_str_for_split(ac, av);

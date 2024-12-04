@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instruction.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yfradj <yassinfradj28@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:31:44 by yfradj            #+#    #+#             */
-/*   Updated: 2024/11/29 16:16:29 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/04 14:33:20 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,25 @@ void	sb(s_list **begin_lb)
 
 void	pa(s_list **begin_la, s_list **begin_lb)
 {
-	s_list	*la;
-	s_list	*lb;
+	s_list	*tmp;
 
-	la = *begin_la;
-	lb = *begin_lb;
-	if (!lb || !la)
+	if (*begin_lb == NULL)
 		return ;
-	ft_lstadd_front(begin_la, lb);
-	// ft_printf("pb\n");
+	tmp = (*begin_lb)->next;
+	(*begin_lb)->next = *begin_la;
+	*begin_la = *begin_lb;
+	*begin_lb = tmp;
 }
 
 void	pb(s_list **begin_la, s_list **begin_lb)
 {
-	s_list	*la;
-	s_list	*lb;
+	s_list	*tmp;
 
-	la = *begin_la;
-	lb = *begin_lb;
-	if (!lb || !la)
+	if (*begin_la == NULL)
 		return ;
-	ft_lstadd_front(begin_lb, la);
+	tmp = (*begin_la)->next;
+	(*begin_la)->next = *begin_lb;
+	*begin_lb = *begin_la;
+	*begin_la = tmp;
 	// ft_printf("pb\n");
 }
