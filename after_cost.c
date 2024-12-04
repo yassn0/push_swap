@@ -12,41 +12,141 @@
 
 #include "push_swap.h"
 
-int	move_to_top_a(s_list **begin_la, int nb_min_cost)
+void move_to_top_a(s_list **begin_la, int nb_min_cost)
 {
-	int	cost_a;
+    int position = 0;
+    s_list *current = *begin_la;
 
-	cost_a = closer_to_the_beginning_or_the_end(begin_la, nb_min_cost);
-	if (cost_a <= 0)
-		return (0);
-	else if (cost_a <= lst_size(begin_la) / 2)
-	{
-		while ((*begin_la)->nb != nb_min_cost)
-			ra(begin_la);
-	}
-	else
-	{
-		while ((*begin_la)->nb != nb_min_cost)
-			rra(begin_la);
-	}
-	return (1);
+    while (current && current->nb != nb_min_cost)
+    {
+        position++;
+        current = current->next;
+    }
+
+    if (!current)
+    {
+        ft_printf("Erreur : Valeur %d non trouvée dans la liste 'la'\n", nb_min_cost);
+        return;
+    }
+
+    if (position <= lst_size(begin_la) / 2)
+    {
+        while ((*begin_la)->nb != nb_min_cost)
+        {
+            ra(begin_la);
+            ft_printf("ra\n");
+        }
+    }
+    else
+    {
+        while ((*begin_la)->nb != nb_min_cost)
+        {
+            rra(begin_la);
+            ft_printf("rra\n");
+        }
+    }
 }
 
-int	move_to_position_b(s_list **begin_lb, int n)
+void move_to_position_b(s_list **begin_lb, int n)
 {
-	int cost_b = cost_sort_lb_for_pb(begin_lb, n);
+    if (*begin_lb == NULL)
+        return;
 
-	if (cost_b == 0)
-		return (0);
-	else if (cost_b <= lst_size(begin_lb) / 2)
-	{
-		while (cost_b-- > 0)
-			rb(begin_lb);
-	}
-	else
-	{
-		while (cost_b-- > 0)
-			rrb(begin_lb);
-	}
-	return (1);
+    int position = 0;
+    s_list *current = *begin_lb;
+    int size = lst_size(begin_lb);
+
+    while (current && current->nb > n)
+    {
+        position++;
+        current = current->next;
+    }
+
+    if (position <= size / 2)
+    {
+        while (position > 0)
+        {
+            rb(begin_lb);
+            ft_printf("rb\n");
+            position--;
+        }
+    }
+    else
+    {
+        while (position < size)
+        {
+            rrb(begin_lb);
+            ft_printf("rrb\n");
+            position++;
+        }
+    }
+}
+
+void sort_three(s_list **begin_list)
+{
+    int a = (*begin_list)->nb;
+    int b = (*begin_list)->next->nb;
+    int c = (*begin_list)->next->next->nb;
+
+    if (a > b && b < c && a < c)
+        sa(begin_list);
+    else if (a > b && b > c)
+    {
+        sa(begin_list);
+        rra(begin_list);
+    }
+    else if (a > b && b < c && a > c)
+        ra(begin_list);
+    else if (a < b && b > c && a < c)
+    {
+        sa(begin_list);
+        ra(begin_list);
+    }
+    else if (a < b && b > c && a > c)
+        rra(begin_list);
+}
+
+void move_to_position_a(s_list **begin_la, int n)
+{
+    s_list *temp = *begin_la;
+    int position = 0;
+    int size = lst_size(begin_la);
+
+    while (temp && temp->nb < n)
+    {
+        position++;
+        temp = temp->next;
+    }
+
+    if (position <= size / 2)
+    {
+        while (position > 0)
+        {
+            ra(begin_la);
+            position--;
+        }
+    }
+    else
+    {
+        while (position < size)
+        {
+            rra(begin_la);
+            position++;
+        }
+    }
+}
+
+int find_min(s_list **begin_list)
+{
+    s_list *temp = *begin_list;
+    int min = temp->nb;
+
+    while (temp)
+    {
+        if (temp->nb < min)
+            min = temp->nb;
+        temp = temp->next;
+    }
+
+    return min;
 }

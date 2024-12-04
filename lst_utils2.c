@@ -21,20 +21,21 @@ s_list	*ft_lstlast(s_list *lst)
 	return (lst);
 }
 
-int	lst_size(s_list **begin_lst)
+int lst_size(s_list **begin_list)
 {
-	int		i;
-	s_list	*tmp;
-	
-	i = 0;
-	tmp = *begin_lst;
-	while (tmp)
-	{
-		tmp = tmp->next;
-		i++;
-	}
-	return (i);
+    int     size;
+    s_list  *current;
+
+    size = 0;
+    current = *begin_list;
+    while (current)
+    {
+        size++;
+        current = current->next;
+    }
+    return (size);
 }
+
 void	print_list(s_list **lst)
 {
 	s_list	*tmp;

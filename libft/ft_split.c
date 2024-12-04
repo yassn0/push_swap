@@ -53,6 +53,18 @@ static char	*ft_strdup_ind(const char *str, int deb, int fin)
 	return (cpy);
 }
 
+static void	*free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	if (!tab)
+		while (tab[i])
+			free(tab[i]);
+		free(tab);
+	return (NULL);
+}
+	
 char	**ft_split(char const *s, char c)
 {
 	int		i;
@@ -73,6 +85,8 @@ char	**ft_split(char const *s, char c)
 		else if ((s[i] == c || i == ft_strlen((char *)s)) && index >= 0)
 		{
 			split[j++] = ft_strdup_ind(s, index, i);
+			if (!(split[j - 1]))
+				return (free_tab(split));
 			index = -1;
 		}
 		i++;

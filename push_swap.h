@@ -62,7 +62,10 @@ int					find_max(s_list **begin_lst);
 int					find_target_index(s_list **begin_lst, int target);
 void				sort_stack_b(s_list **begin_lb);
 int					n_min_cost(s_list **begin_la, s_list **begin_lb);
-int					move_to_position_b(s_list **begin_lb, int n);
-int					move_to_top_a(s_list **begin_la, int nb_min_cost);
+void					move_to_position_b(s_list **begin_lb, int n);
+void					move_to_top_a(s_list **begin_la, int nb_min_cost);
+void sort_three(s_list **begin_list);
+void move_to_position_a(s_list **begin_la, int n);
+int find_min(s_list **begin_list);
 
 #endif

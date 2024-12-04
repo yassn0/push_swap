@@ -32,6 +32,7 @@ int	main(int ac, char **av)
 	s_list	*la;
 	s_list	*lb;
 	char	**split;
+	s_list *tmp;
 	int		size;
 	int		nb_min_cost;
 
@@ -45,24 +46,28 @@ int	main(int ac, char **av)
 	la = create_list(split);
 	size = lst_size(&la);
 	lb = NULL;
-	// pb(&la, &lb);
-	// pb(&la, &lb);
-	// print_list(&la);
-	// ft_printf("\n");
-	// print_list(&lb);
-	print_list(&la);
+	while (lst_size(&la) > 3)
+    {
+        nb_min_cost = n_min_cost(&la, &lb);
+        move_to_top_a(&la, nb_min_cost);
+        move_to_position_b(&lb, nb_min_cost);
+        pb(&la, &lb);
+    }
 	ft_printf("\n");
-	while (lst_size(&lb) != size)
-	{
-		ft_printf("\n");
-		nb_min_cost = n_min_cost(&la, &lb);
-		move_to_top_a(&la, nb_min_cost);
-		move_to_position_b(&lb, nb_min_cost);
-		pb(&la, &lb);
-		print_list(&lb);
-		
-	}
-	while (lst_size(&lb) > 0)
-		pa(&lb, &la);
+    print_list(&la);
+	sort_three(&la);
+	ft_printf("\n");
+    print_list(&la);
+	tmp = lb;
+	while (lst_size(&tmp) > 0)
+    {
+        move_to_position_a(&la, tmp->nb);
+        pa(&la, &tmp);
+    }
 
+	while (la->nb != find_min(&la))
+        ra(&la);
+    print_list(&la);
+	ft_printf("\n");
+    print_list(&tmp);
 }

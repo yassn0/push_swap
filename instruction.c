@@ -40,28 +40,28 @@ void	sb(s_list **begin_lb)
 	ft_printf("sb\n");
 }
 
-void	pa(s_list **begin_la, s_list **begin_lb)
+void	pa(s_list **la, s_list **lb)
 {
-	s_list	*tmp;
+    s_list *temp;
 
-	if (*begin_lb == NULL)
-		return ;
-	tmp = (*begin_lb)->next;
-	(*begin_lb)->next = *begin_la;
-	*begin_la = *begin_lb;
-	*begin_lb = tmp;
-	ft_printf("pa\n");
+    if (*la == NULL)
+        return;
+    temp = *lb;
+    *lb = (*lb)->next;
+    temp->next = *la;
+    *la = temp;
+    ft_printf("pa\n");
 }
 
-void	pb(s_list **begin_la, s_list **begin_lb)
+void pb(s_list **la, s_list **lb)
 {
-	s_list	*tmp;
+    s_list *temp;
 
-	if (*begin_la == NULL)
-		return ;
-	tmp = (*begin_la)->next;
-	(*begin_la)->next = *begin_lb;
-	*begin_lb = *begin_la;
-	*begin_la = tmp;
-	ft_printf("pb\n");
+    if (*la == NULL)
+        return;
+    temp = *la;
+    *la = (*la)->next;
+    temp->next = *lb;
+    *lb = temp;
+    ft_printf("pb\n");
 }
