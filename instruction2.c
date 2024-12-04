@@ -6,7 +6,7 @@
 /*   By: yfradj <yassinfradj28@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 15:30:28 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/04 15:58:29 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/04 18:01:10 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	rra(s_list **begin_la)
 	lst->next = NULL;
 	end->next = *begin_la;
 	*begin_la = end;
+	ft_printf("rra\n");
 }
 
 void	rrb(s_list **begin_lb)

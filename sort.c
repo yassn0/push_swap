@@ -6,7 +6,7 @@
 /*   By: yfradj <yassinfradj28@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 17:44:35 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/04 17:34:32 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/04 18:10:04 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,23 +110,22 @@ int	calcul_cost(s_list **begin_la, s_list **begin_lb, int n)
 
 int	n_min_cost(s_list **begin_la, s_list **begin_lb)
 {
-	int	nb;
-	int	cost;
-	int	min_cost;
+	int		nb;
+	int		cost;
+	s_list	*temp_la;
 
-	nb = (*begin_la)->nb;
-	cost = calcul_cost(begin_la, begin_lb, (*begin_la)->nb);
-	min_cost = cost;
-	*begin_la = (*begin_la)->next;
-	while (*begin_la)
+	temp_la = *begin_la;
+	nb = temp_la->nb;
+	cost = calcul_cost(begin_la, begin_lb, temp_la->nb);
+	temp_la = temp_la->next;
+	while (temp_la)
 	{
-		cost = calcul_cost(begin_la, begin_lb, (*begin_la)->nb);
-		if (cost < min_cost)
+		if (cost > calcul_cost(begin_la, begin_lb, temp_la->nb))
 		{
-			min_cost = cost;
-			nb = (*begin_la)->nb;
+			cost = calcul_cost(begin_la, begin_lb, temp_la->nb);
+			nb = temp_la->nb;
 		}
-		*begin_la = (*begin_la)->next;
+		temp_la = temp_la->next;
 	}
 	return (nb);
 }

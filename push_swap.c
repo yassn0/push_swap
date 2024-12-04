@@ -6,7 +6,7 @@
 /*   By: yfradj <yassinfradj28@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:34:47 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/04 17:50:59 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/04 18:20:45 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int ac, char **av)
 		return (error());
 	else if (double_number(split) == 1)
 		return (error());
-	la = create_list(split);	
+	la = create_list(split);
 	size = lst_size(&la);
 	lb = NULL;
 	// pb(&la, &lb);
@@ -50,10 +50,19 @@ int	main(int ac, char **av)
 	// print_list(&la);
 	// ft_printf("\n");
 	// print_list(&lb);
-	nb_min_cost = 0;
-	while (lst_size(&lb) != size && (!is_sorted))
+	print_list(&la);
+	ft_printf("\n");
+	while (lst_size(&lb) != size)
 	{
+		ft_printf("\n");
 		nb_min_cost = n_min_cost(&la, &lb);
+		move_to_top_a(&la, nb_min_cost);
+		move_to_position_b(&lb, nb_min_cost);
+		pb(&la, &lb);
+		print_list(&lb);
 		
 	}
+	while (lst_size(&lb) > 0)
+		pa(&lb, &la);
+
 }

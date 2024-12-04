@@ -6,7 +6,7 @@
 /*   By: yfradj <yassinfradj28@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:31:44 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/04 14:33:20 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/04 18:00:52 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	sa(s_list **begin_la)
 	tmp = lst->nb;
 	lst->nb = lst->next->nb;
 	lst->next->nb = tmp;
-	// ft_printf("sa\n");
+	ft_printf("sa\n");
 }
 
 void	sb(s_list **begin_lb)
@@ -37,7 +37,7 @@ void	sb(s_list **begin_lb)
 	tmp = lst->nb;
 	lst->nb = lst->next->nb;
 	lst->next->nb = tmp;
-	// ft_printf("sb\n");
+	ft_printf("sb\n");
 }
 
 void	pa(s_list **begin_la, s_list **begin_lb)
@@ -50,6 +50,7 @@ void	pa(s_list **begin_la, s_list **begin_lb)
 	(*begin_lb)->next = *begin_la;
 	*begin_la = *begin_lb;
 	*begin_lb = tmp;
+	ft_printf("pa\n");
 }
 
 void	pb(s_list **begin_la, s_list **begin_lb)
@@ -62,5 +63,5 @@ void	pb(s_list **begin_la, s_list **begin_lb)
 	(*begin_la)->next = *begin_lb;
 	*begin_lb = *begin_la;
 	*begin_la = tmp;
-	// ft_printf("pb\n");
+	ft_printf("pb\n");
 }
