@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfradj <yassinfradj28@gmail.com>           +#+  +:+       +#+        */
+/*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:34:47 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/04 18:20:45 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/05 16:33:59 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int ac, char **av)
 	s_list	*la;
 	s_list	*lb;
 	char	**split;
-	s_list *tmp;
+	s_list	*tmp;
 	int		size;
 	int		nb_min_cost;
 
@@ -47,27 +47,21 @@ int	main(int ac, char **av)
 	size = lst_size(&la);
 	lb = NULL;
 	while (lst_size(&la) > 3)
-    {
-        nb_min_cost = n_min_cost(&la, &lb);
-        move_to_top_a(&la, nb_min_cost);
-        move_to_position_b(&lb, nb_min_cost);
-        pb(&la, &lb);
-    }
-	ft_printf("\n");
-    print_list(&la);
+	{
+		nb_min_cost = n_min_cost(&la, &lb);
+		// ft_printf("%d\n", nb_min_cost);
+		move_to_top_a(&la, nb_min_cost);
+		move_to_b(&lb, nb_min_cost);
+		pb(&la, &lb);
+		print_list(&lb);
+	}
 	sort_three(&la);
-	ft_printf("\n");
-    print_list(&la);
 	tmp = lb;
-	while (lst_size(&tmp) > 0)
-    {
-        move_to_position_a(&la, tmp->nb);
-        pa(&la, &tmp);
-    }
-
-	while (la->nb != find_min(&la))
-        ra(&la);
-    print_list(&la);
-	ft_printf("\n");
-    print_list(&tmp);
+	// while (lst_size(&tmp) > 0)
+	// {
+	// 	pa(&la, &tmp);
+	// }
+	// while (la->nb != find_min(&la))
+	// 	ra(&la);
+	print_list(&la);
 }

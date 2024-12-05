@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfradj <yassinfradj28@gmail.com>           +#+  +:+       +#+        */
+/*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 17:44:35 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/04 18:10:04 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/05 16:03:19 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ int n_min_cost(s_list **begin_la, s_list **begin_lb)
     temp_la = *begin_la;
     min_cost = INT_MAX;
     min_value = temp_la->nb;
-
     while (temp_la)
     {
         current_cost = calcul_cost(begin_la, begin_lb, temp_la->nb);
@@ -129,6 +128,6 @@ int n_min_cost(s_list **begin_la, s_list **begin_lb)
         }
         temp_la = temp_la->next;
     }
-    return min_value;
+    return (min_value);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfradj <yassinfradj28@gmail.com>           +#+  +:+       +#+        */
+/*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:45:43 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/04 17:59:57 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/05 16:29:57 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,15 @@ int					error(void);
 int					double_number(char **tab);
 int					check_error2(char **tab);
 int					check_error1(char **tab);
+int					ft_atoi_max(const char *str);
+
 s_list				*ft_lstnew(int n);
 void				ft_lstadd_front(s_list **lst, s_list *new);
 void				ft_lstadd_back(s_list **lst, int n);
 void				ft_lstadd_front(s_list **lst, s_list *new);
 void				ft_lstclear(s_list **lst);
 s_list				*ft_lstlast(s_list *lst);
-int					ft_atoi_max(const char *str);
+
 char				**get_split(int ac, char **av);
 char				*create_str_for_split(int ac, char **av);
 int					len_av(int ac, char **av);
@@ -62,10 +64,10 @@ int					find_max(s_list **begin_lst);
 int					find_target_index(s_list **begin_lst, int target);
 void				sort_stack_b(s_list **begin_lb);
 int					n_min_cost(s_list **begin_la, s_list **begin_lb);
-void					move_to_position_b(s_list **begin_lb, int n);
-void					move_to_top_a(s_list **begin_la, int nb_min_cost);
-void sort_three(s_list **begin_list);
-void move_to_position_a(s_list **begin_la, int n);
-int find_min(s_list **begin_list);
+void				move_to_b(s_list **begin_lb, int n);
+void				move_to_top_a(s_list **begin_la, int nb_min_cost);
+void				sort_three(s_list **begin_list);
+void				move_to_position_a(s_list **begin_la, int n);
+int					find_min(s_list **begin_list);
 
 #endif
