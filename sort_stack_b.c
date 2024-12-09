@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack_b.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfradj <yassinfradj28@gmail.com>           +#+  +:+       +#+        */
+/*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 14:56:08 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/04 16:43:33 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/09 15:29:50 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,29 +45,47 @@ int	find_target_index(s_list **begin_lst, int target)
 	return (index);
 }
 
-void	sort_stack_b(s_list **begin_lb)
+void	sort_stack_b(s_list **lb)
 {
-	int	max;
-	int	target_index;
-	int	size;
+    s_list *current;
+    s_list *max;
+    int size;
+    int index;
+    int moves;
 
-	if (!(*begin_lb) || !(*begin_lb)->next)
-		return ;
-	while (!is_sorted_dec(begin_lb))
-	{
-		max = find_max(begin_lb);
-		size = lst_size(begin_lb);
-		target_index = find_target_index(begin_lb, max);
-		if (target_index <= size / 2)
-		{
-			while ((*begin_lb)->nb != max)
-				rb(begin_lb);
-		}
-		else
-		{
-			while ((*begin_lb)->nb != max)
-				rrb(begin_lb);
-		}
-	}
+    if (!(*lb) || !(*lb)->next)
+        return;
+
+    // Trouver le plus grand élément dans `STACK_B`
+    current = *lb;
+    max = current;
+    index = 0;
+    size = 0;
+
+    while (current)
+    {
+        if (current->nb > max->nb)
+        {
+            max = current;
+            index = size;
+        }
+        current = current->next;
+        size++;
+    }
+
+    // Calcule le coût pour aligner le maximum au sommet
+    if (index <= size / 2)
+    {
+        // Effectuer des rotations RB pour aligner le maximum
+        while (index-- > 0)
+            rb(lb);
+    }
+    else
+    {
+        // Effectuer des rotations inversées RRB
+        moves = size - index;
+        while (moves-- > 0)
+            rrb(lb);
+    }
 }
 

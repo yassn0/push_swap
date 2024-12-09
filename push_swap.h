@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:45:43 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/05 16:29:57 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/09 17:55:22 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,11 @@ int					find_max(s_list **begin_lst);
 int					find_target_index(s_list **begin_lst, int target);
 void				sort_stack_b(s_list **begin_lb);
 int					n_min_cost(s_list **begin_la, s_list **begin_lb);
-void				move_to_b(s_list **begin_lb, int n);
+int					prepare_lb(s_list **lb, int n);
+void				go_back(s_list **lb, int back);
 void				move_to_top_a(s_list **begin_la, int nb_min_cost);
 void				sort_three(s_list **begin_list);
+void				sort_three_dec(s_list **begin_list);
 void				move_to_position_a(s_list **begin_la, int n);
 int					find_min(s_list **begin_list);
 

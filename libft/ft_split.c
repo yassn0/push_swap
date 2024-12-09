@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:31:29 by yfradj            #+#    #+#             */
-/*   Updated: 2024/11/28 13:07:28 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/09 18:06:18 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,11 @@ static void	*free_tab(char **tab)
 
 	i = 0;
 	if (!tab)
+	{
 		while (tab[i])
 			free(tab[i]);
 		free(tab);
+	}
 	return (NULL);
 }
 	

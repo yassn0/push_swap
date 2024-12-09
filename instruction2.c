@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instruction2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfradj <yassinfradj28@gmail.com>           +#+  +:+       +#+        */
+/*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 15:30:28 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/04 18:01:10 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/09 18:06:35 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	rb(s_list **begin_lb)
 void	rra(s_list **begin_la)
 {
 	s_list	*lst;
-	s_list	*tmp2;
 	s_list	*end;
 
 	if (!begin_la || !(*begin_la) || !((*begin_la)->next))
