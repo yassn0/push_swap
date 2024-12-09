@@ -6,11 +6,39 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:34:47 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/09 18:04:58 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/09 19:22:56 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	is_sorted_dec(s_list **begin_list)
+{
+	s_list	*lst;
+
+	lst = *begin_list;
+	while (lst && lst->next)
+	{
+		if (lst->nb < lst->next->nb)
+			return (0);
+		lst = lst->next;
+	}
+	return (1);
+}
+
+int	is_sorted(s_list **begin_list)
+{
+	s_list	*lst;
+
+	lst = *begin_list;
+	while (lst && lst->next)
+	{
+		if (lst->nb > lst->next->nb)
+			return (0);
+		lst = lst->next;
+	}
+	return (1);
+}
 
 s_list	*create_list(char **tab)
 {
@@ -27,12 +55,41 @@ s_list	*create_list(char **tab)
 	return (lst);
 }
 
+void	ft_algo(s_list **la, s_list **lb)
+{
+	int	nb_min_cost;
+	int	back;
+	int	size;
+
+	nb_min_cost = 0;
+	back = 0;
+	while (lst_size(la) > 0)
+	{
+		nb_min_cost = n_min_cost(la, lb);
+		move_to_top_a(la, nb_min_cost);
+		back = prepare_lb(lb, nb_min_cost);
+		pb(la, lb);
+		if (!is_sorted(lb))
+			go_back(lb, back);
+	}
+}
+
+void	ft_algo2(s_list **la, s_list **lb, int size)
+{
+	while (size > 0)
+	{
+		if (lst_size(lb) == 0)
+			break ;
+		pa(la, lb);
+		size--;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	s_list	*la;
 	s_list	*lb;
 	char	**split;
-	s_list	*tmp;
 	int		size;
 	int		nb_min_cost;
 	int		back;
@@ -53,38 +110,10 @@ int	main(int ac, char **av)
 	pb(&la, &lb);
 	pb(&la, &lb);
 	sort_three_dec(&lb); // or less
-	
-	while (lst_size(&la) > 0)
-	{
-		nb_min_cost = n_min_cost(&la, &lb);
-		// ft_printf(" min_cost : %d\n", nb_min_cost);
-		// print_list(&lb);
-		move_to_top_a(&la, nb_min_cost);
-		back = prepare_lb(&lb, nb_min_cost);
-		// print_list(&lb);
-		pb(&la, &lb);
-		if (!is_sorted(&lb))
-			go_back(&lb, back);
-	}
-	print_list(&lb);
-	// print_list(&la);
-	tmp = lb;
-	while (lst_size(&tmp) > 0)
-	{
-		// ft_printf("size of lb = %d\n", lst_size(&lb));
-		pa(&la, &tmp);
-		
-	}
-	// print_list(&la);
-	// print_list(&lb);
-	// sort_three(&la);
-	// while (lst_size(&tmp) > 0)
-	// {
-	// 	pa(&la, &tmp);
-	// }
-	// while (la->nb != find_min(&la))
-	// 	ra(&la);
-	// print_list(&la);
+	ft_algo(&la, &lb);
+	ft_algo2(&la, &lb, size);
+	print_list(&la);
+	// free tout
 }
 
 // int main(int ac, char **av)
@@ -100,7 +129,7 @@ int	main(int ac, char **av)
 // 		return (error());
 // 	else if (double_number(split) == 1)
 // 		return (error());
-		
+
 // 	lb = create_list(split);
 // 	int back = prepare_lb(&lb, 3);
 // 	s_list *la = ft_lstnew(3);

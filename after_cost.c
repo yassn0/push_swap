@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 17:56:08 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/09 17:55:12 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/09 19:10:17 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,29 +40,15 @@ void	move_to_top_a(s_list **begin_la, int nb_min_cost)
 
 int	prepare_lb(s_list **lb, int n)
 {
-	s_list	*current;
 	int		index;
 	int		size;
 	int		back;
 
 	if (!(*lb) || !(*lb)->next)
 		return (-1);
-	current = *lb;
-	index = 0;
+	index = calcul_index(lb, n);
 	size = lst_size(lb);
 	back = 0;
-	while (current)
-	{
-		if (current->nb > n && (!current->next || current->next->nb < n))
-		{
-			index++;
-			break ;
-		}
-		current = current->next;
-		index++;
-	}
-	// ft_printf("%d\n", index);
-	
 	if (index <= size / 2)
 		while (index-- > 0)
 			rb(lb);
@@ -78,16 +64,6 @@ int	prepare_lb(s_list **lb, int n)
 
 void	go_back(s_list **lb, int back)
 {
-	// int	rrb_or_rb;
-	
-	// if (back > 100000)
-	// {
-	// 	rrb_or_rb = 1;
-	// 	back -= 100000;
-	// }
-	// else
-	// 	rrb_or_rb = 0;
-	// back += 1;
 	if (back == 1)
 	{
 		while (!is_sorted_dec(lb))
@@ -151,52 +127,4 @@ void	sort_three_dec(s_list **begin_list)
 	}
 	else if (a > b && b < c && a < c)
 		rra(begin_list);
-}
-
-void	move_to_position_a(s_list **begin_la, int n)
-{
-	s_list	*temp;
-	int		position;
-	int		size;
-
-	temp = *begin_la;
-	position = 0;
-	size = lst_size(begin_la);
-	while (temp && temp->nb < n)
-	{
-		position++;
-		temp = temp->next;
-	}
-	if (position <= size / 2)
-	{
-		while (position > 0)
-		{
-			ra(begin_la);
-			position--;
-		}
-	}
-	else
-	{
-		while (position < size)
-		{
-			rra(begin_la);
-			position++;
-		}
-	}
-}
-
-int	find_min(s_list **begin_list)
-{
-	s_list	*temp;
-	int		min;
-
-	temp = *begin_list;
-	min = temp->nb;
-	while (temp)
-	{
-		if (temp->nb < min)
-			min = temp->nb;
-		temp = temp->next;
-	}
-	return (min);
 }

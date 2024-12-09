@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instruction.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfradj <yassinfradj28@gmail.com>           +#+  +:+       +#+        */
+/*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:31:44 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/04 18:00:52 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/09 19:00:44 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,33 @@ void	sb(s_list **begin_lb)
 
 void	pa(s_list **la, s_list **lb)
 {
-    s_list *temp;
+	s_list	*temp;
 
-    if (*la == NULL)
-        return;
-    temp = *lb;
-    *lb = (*lb)->next;
-    temp->next = *la;
-    *la = temp;
-    ft_printf("pa\n");
+	if (*lb == NULL)
+		return ;
+	temp = *lb;
+	*lb = (*lb)->next;
+	if (*la == NULL)
+	{
+		temp->next = NULL;
+		*la = temp;
+	}
+	else
+	{
+		temp->next = *la;
+		*la = temp;
+	}
 }
 
-void pb(s_list **la, s_list **lb)
+void	pb(s_list **la, s_list **lb)
 {
-    s_list *temp;
+	s_list	*temp;
 
-    if (*la == NULL)
-        return;
-    temp = *la;
-    *la = (*la)->next;
-    temp->next = *lb;
-    *lb = temp;
-    ft_printf("pb\n");
+	if (*la == NULL)
+		return ;
+	temp = *la;
+	*la = (*la)->next;
+	temp->next = *lb;
+	*lb = temp;
+	ft_printf("pb\n");
 }

@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 15:30:28 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/09 18:06:35 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/09 19:00:48 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	rb(s_list **begin_lb)
 	first->next = NULL;
 	last->next = first;
 	ft_printf("rb\n");
-	
 }
 
 void	rra(s_list **begin_la)
@@ -66,7 +65,7 @@ void	rrb(s_list **begin_lb)
 {
 	s_list *prev = NULL;
 	s_list *current = *begin_lb;
-	
+
 	if (!(*begin_lb) || !(*begin_lb)->next)
 		return ;
 	while (current->next)

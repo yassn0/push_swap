@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:45:43 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/09 17:55:22 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/09 19:10:59 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int					ft_atoi_max(const char *str);
 s_list				*ft_lstnew(int n);
 void				ft_lstadd_front(s_list **lst, s_list *new);
 void				ft_lstadd_back(s_list **lst, int n);
-void				ft_lstadd_front(s_list **lst, s_list *new);
 void				ft_lstclear(s_list **lst);
 s_list				*ft_lstlast(s_list *lst);
 
@@ -53,23 +52,19 @@ void				ra(s_list **begin_la);
 void				rb(s_list **begin_lb);
 void				rra(s_list **begin_la);
 void				rrb(s_list **begin_lb);
+
 int					is_sorted_dec(s_list **begin_list);
 int					is_sorted(s_list **begin_list);
-int					calcul_index(s_list **begin_list, int n);
+int					calcul_index(s_list **lb, int n);
 int					closer_to_the_beginning_or_the_end(s_list **begin_list,
 						int n);
 int					cost_sort_lb_for_pb(s_list **lb, int n);
 int					calcul_cost(s_list **begin_la, s_list **begin_lb, int n);
-int					find_max(s_list **begin_lst);
-int					find_target_index(s_list **begin_lst, int target);
-void				sort_stack_b(s_list **begin_lb);
 int					n_min_cost(s_list **begin_la, s_list **begin_lb);
 int					prepare_lb(s_list **lb, int n);
 void				go_back(s_list **lb, int back);
 void				move_to_top_a(s_list **begin_la, int nb_min_cost);
 void				sort_three(s_list **begin_list);
 void				sort_three_dec(s_list **begin_list);
-void				move_to_position_a(s_list **begin_la, int n);
-int					find_min(s_list **begin_list);
 
 #endif
