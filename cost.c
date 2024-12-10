@@ -6,28 +6,11 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 17:44:35 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/09 19:06:02 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/10 10:27:55 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// int	calcul_index(s_list **begin_list, int n)
-// {
-// 	int		i;
-// 	s_list	*lst;
-
-// 	i = 0;
-// 	lst = *begin_list;
-// 	while (lst)
-// 	{
-// 		if (lst->nb == n)
-// 			return (i);
-// 		lst = lst->next;
-// 		i++;
-// 	}
-// 	return (i);
-// }
 
 int	closer_to_the_beginning_or_the_end(s_list **begin_list, int n)
 {

@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:34:47 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/09 19:22:56 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/10 11:47:05 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,65 +55,27 @@ s_list	*create_list(char **tab)
 	return (lst);
 }
 
-void	ft_algo(s_list **la, s_list **lb)
-{
-	int	nb_min_cost;
-	int	back;
-	int	size;
-
-	nb_min_cost = 0;
-	back = 0;
-	while (lst_size(la) > 0)
-	{
-		nb_min_cost = n_min_cost(la, lb);
-		move_to_top_a(la, nb_min_cost);
-		back = prepare_lb(lb, nb_min_cost);
-		pb(la, lb);
-		if (!is_sorted(lb))
-			go_back(lb, back);
-	}
-}
-
-void	ft_algo2(s_list **la, s_list **lb, int size)
-{
-	while (size > 0)
-	{
-		if (lst_size(lb) == 0)
-			break ;
-		pa(la, lb);
-		size--;
-	}
-}
-
 int	main(int ac, char **av)
 {
 	s_list	*la;
 	s_list	*lb;
 	char	**split;
 	int		size;
-	int		nb_min_cost;
-	int		back;
 
 	if (ac == 1)
 		exit(0);
-	split = get_split(ac, av); // securite
+	split = get_split(ac, av);
 	if (check_error2(split) == 1 || check_error1(split) == 1)
-		return (error());
+		return (error(split));
 	else if (double_number(split) == 1)
-		return (error());
-		
+		return (error(split));
 	la = create_list(split);
+	if (special_case(&la, split) == 0)
+		return (0);
 	size = lst_size(&la);
 	lb = NULL;
-	back = 0;
-	pb(&la, &lb);
-	pb(&la, &lb);
-	pb(&la, &lb);
-	sort_three_dec(&lb); // or less
-	ft_algo(&la, &lb);
-	ft_algo2(&la, &lb, size);
-	print_list(&la);
-	// free tout
+	ft_algo(&la, &lb, size);
+	free_all(split, &la);
 }
 
 // int main(int ac, char **av)

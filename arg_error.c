@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:06:03 by yfradj            #+#    #+#             */
-/*   Updated: 2024/11/28 16:57:10 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/10 11:46:23 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,9 @@ int	double_number(char **tab)
 	return (0);
 }
 
-int	error(void)
+int	error(char **split)
 {
+	free_tab(split);
 	ft_printf("Error\n");
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:31:29 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/09 18:06:18 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/10 11:31:35 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,26 @@ static char	*ft_strdup_ind(const char *str, int deb, int fin)
 	return (cpy);
 }
 
-static void	*free_tab(char **tab)
+static void	*free_tab(char **tab, int size)
 {
 	int	i;
 
 	i = 0;
-	if (!tab)
+	while (i < size)
 	{
-		while (tab[i])
-			free(tab[i]);
-		free(tab);
+		free(tab[i]);
+		i++;
 	}
+	free(tab);
 	return (NULL);
 }
-	
+
+static char	**help_line(int j, char **split)
+{
+	split[j] = NULL;
+	return (split);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	int		i;
@@ -88,13 +94,12 @@ char	**ft_split(char const *s, char c)
 		{
 			split[j++] = ft_strdup_ind(s, index, i);
 			if (!(split[j - 1]))
-				return (free_tab(split));
+				return (free_tab(split, j));
 			index = -1;
 		}
 		i++;
 	}
-	split[j] = NULL;
-	return (split);
+	return (help_line(j, split));
 }
 
 // int	main(void)

@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 16:10:39 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/09 19:08:50 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/10 11:43:43 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,11 @@ int	ft_atoi_max(const char *str)
 		return (-somme);
 	return ((int)somme);
 }
+
 int	calcul_index(s_list **lb, int n)
 {
-	s_list *current;
-	int index;
+	s_list	*current;
+	int		index;
 
 	index = 0;
 	current = *lb;
@@ -58,4 +59,37 @@ int	calcul_index(s_list **lb, int n)
 		index++;
 	}
 	return (index);
+}
+
+void	sort_two_or_one(s_list **la)
+{
+	if (is_sorted(la))
+		return ;
+	if (lst_size(la) == 2)
+		sa(la);
+}
+
+void	free_all(char **split, s_list **la)
+{
+	if (la)
+	{
+		ft_lstclear(la);
+		free_tab(split);
+	}
+}
+
+int	special_case(s_list **la, char **split)
+{
+	if (is_sorted(la))
+	{
+		free_all(split, la);
+		return (0);
+	}
+	if (lst_size(la) < 3)
+	{
+		sort_two_or_one(la);
+		free_all(split, la);
+		return (0);
+	}
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:24:49 by yfradj            #+#    #+#             */
-/*   Updated: 2024/11/29 11:55:11 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/10 11:40:02 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,17 @@ char	**get_split(int ac, char **av)
 		split = ft_split(str, ' ');
 	}
 	return (split);
+}
+
+void	free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
 }

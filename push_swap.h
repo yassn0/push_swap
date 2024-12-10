@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:45:43 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/09 19:10:59 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/10 11:46:57 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct a_list
 	struct a_list	*next;
 }					s_list;
 
-int					error(void);
+int					error(char **split);
 int					double_number(char **tab);
 int					check_error2(char **tab);
 int					check_error1(char **tab);
@@ -66,5 +66,13 @@ void				go_back(s_list **lb, int back);
 void				move_to_top_a(s_list **begin_la, int nb_min_cost);
 void				sort_three(s_list **begin_list);
 void				sort_three_dec(s_list **begin_list);
+
+void				ft_algo(s_list **la, s_list **lb, int size);
+void				ft_algo1(s_list **la, s_list **lb);
+void				ft_algo2(s_list **la, s_list **lb, int size);
+int					special_case(s_list **la, char **split);
+void				sort_two_or_one(s_list **la);
+void				free_all(char **split, s_list **la);
+void				free_tab(char **tab);
 
 #endif
