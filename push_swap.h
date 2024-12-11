@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:45:43 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/10 11:46:57 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/11 16:49:34 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,12 @@ void				ra(s_list **begin_la);
 void				rb(s_list **begin_lb);
 void				rra(s_list **begin_la);
 void				rrb(s_list **begin_lb);
+void				rr(s_list **la, s_list **lb);
+void				rrr(s_list **la, s_list **lb);
+void				ra_no_comment(s_list **begin_la);
+void				rb_no_comment(s_list **begin_lb);
+void				rra_no_comment(s_list **begin_la);
+void				rrb_no_comment(s_list **begin_lb);
 
 int					is_sorted_dec(s_list **begin_list);
 int					is_sorted(s_list **begin_list);
@@ -74,5 +80,11 @@ int					special_case(s_list **la, char **split);
 void				sort_two_or_one(s_list **la);
 void				free_all(char **split, s_list **la);
 void				free_tab(char **tab);
+
+int					count_to_top_a(s_list **begin_la, int nb_min_cost);
+int					count_prepare_lb(s_list **lb, int n);
+int					rrr_rr_possible(s_list **la, s_list **lb, int nb_min_cost);
+
+int					ft_min(s_list *la);
 
 #endif

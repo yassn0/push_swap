@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:31:44 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/09 19:00:44 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/11 14:53:55 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	pa(s_list **la, s_list **lb)
 		temp->next = *la;
 		*la = temp;
 	}
+	ft_printf("pa\n");
 }
 
 void	pb(s_list **la, s_list **lb)
@@ -71,4 +72,11 @@ void	pb(s_list **la, s_list **lb)
 	temp->next = *lb;
 	*lb = temp;
 	ft_printf("pb\n");
+}
+
+void	rr(s_list **la, s_list **lb)
+{
+	ra_no_comment(la);
+	rb_no_comment(lb);
+	ft_printf("rr\n");
 }

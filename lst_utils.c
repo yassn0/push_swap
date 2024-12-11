@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:14:34 by yfradj            #+#    #+#             */
-/*   Updated: 2024/11/29 14:48:11 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/11 15:53:59 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	ft_lstclear(s_list **lst)
 	while (*lst)
 	{
 		tmp = (*lst)->next;
+		(*lst)->nb = 0;
 		free(*lst);
 		*lst = tmp;
 	}
-	*lst = NULL;
 }

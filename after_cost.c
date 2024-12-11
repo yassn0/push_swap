@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 17:56:08 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/09 19:10:17 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/11 15:06:58 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	move_to_top_a(s_list **begin_la, int nb_min_cost)
 	}
 	if (!current)
 		return ;
-	if (position <= lst_size(begin_la) / 2)
+	if (position <= lst_size(begin_la))
 	{
 		while ((*begin_la)->nb != nb_min_cost)
 			ra(begin_la);
@@ -39,7 +39,7 @@ void	move_to_top_a(s_list **begin_la, int nb_min_cost)
 }
 
 int	prepare_lb(s_list **lb, int n)
-{
+{	
 	int		index;
 	int		size;
 	int		back;
