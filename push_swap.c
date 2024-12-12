@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:34:47 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/11 16:43:02 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/12 17:05:10 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,49 +55,27 @@ s_list	*create_list(char **tab)
 	return (lst);
 }
 
-// int	main(int ac, char **av)
-// {
-// 	s_list	*la;
-// 	s_list	*lb;
-// 	char	**split;
-// 	int		size;
+int	main(int ac, char **av)
+{
+	s_list	*la;
+	s_list	*lb;
+	char	**split;
+	int		size;
 
-// 	if (ac == 1)
-// 		exit(0);
-// 	split = get_split(ac, av);
-// 	if (check_error2(split) == 1 || check_error1(split) == 1)
-// 		return (error(split));
-// 	else if (double_number(split) == 1)
-// 		return (error(split));
-// 	la = create_list(split);
-// 	if (special_case(&la, split) == 0)
-// 		return (0);
-// 	size = lst_size(&la);
-// 	lb = NULL;
-// 	ft_algo(&la, &lb, size);
-// 	// print_list(&la);
-// 	free_all(split, &la);
-// }
-
-// int main(int ac, char **av)
-// {
-// 	s_list	*lb;
-// 	s_list	*la;
-// 	char	**split;
-// 	s_list	*tmp;
-
-// 	if (ac == 1)
-// 		exit(0);
-// 	split = get_split(ac, av); // securite
-// 	if (check_error2(split) == 1 || check_error1(split) == 1)
-// 		return (error(split));
-// 	else if (double_number(split) == 1)
-// 		return (error(split));
-
-// 	la = create_list(split);
-// 	lb = NULL;
-// 	int size = lst_size(&la);
-// 	ft_algo(&la, &lb, size);
-// 	print_list(&la);
-// }
-
+	if (ac == 1)
+		exit(0);
+	split = get_split(ac, av);
+	if (check_error2(split) == 1 || check_error1(split) == 1)
+		return (error(split));
+	else if (double_number(split) == 1)
+		return (error(split));
+	la = create_list(split);
+	if (special_case(&la, split) == 0)
+		return (0);
+	lb = NULL;
+	size = lst_size(&la);
+	put_index(&la);
+	k_sort1(&la, &lb, size);
+	k_sort2(&la, &lb, size);
+	free_all(split, &la);
+}

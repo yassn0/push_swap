@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:45:43 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/11 16:49:34 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/12 16:51:36 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 typedef struct a_list
 {
 	int				nb;
+	int				s_index;
 	struct a_list	*next;
 }					s_list;
 
@@ -67,11 +68,7 @@ int					closer_to_the_beginning_or_the_end(s_list **begin_list,
 int					cost_sort_lb_for_pb(s_list **lb, int n);
 int					calcul_cost(s_list **begin_la, s_list **begin_lb, int n);
 int					n_min_cost(s_list **begin_la, s_list **begin_lb);
-int					prepare_lb(s_list **lb, int n);
-void				go_back(s_list **lb, int back);
-void				move_to_top_a(s_list **begin_la, int nb_min_cost);
 void				sort_three(s_list **begin_list);
-void				sort_three_dec(s_list **begin_list);
 
 void				ft_algo(s_list **la, s_list **lb, int size);
 void				ft_algo1(s_list **la, s_list **lb);
@@ -81,10 +78,13 @@ void				sort_two_or_one(s_list **la);
 void				free_all(char **split, s_list **la);
 void				free_tab(char **tab);
 
-int					count_to_top_a(s_list **begin_la, int nb_min_cost);
-int					count_prepare_lb(s_list **lb, int n);
-int					rrr_rr_possible(s_list **la, s_list **lb, int nb_min_cost);
+// new algo
 
-int					ft_min(s_list *la);
+int					ft_sqrt(int nb);
+int					count_rotation(s_list *stack, int index);
+void				k_sort1(s_list **la, s_list **lb, int length);
+void				k_sort2(s_list **la, s_list **lb, int length);
+void	put_index(s_list **la);
+
 
 #endif
