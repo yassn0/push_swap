@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort2.c                                            :+:      :+:    :+:   */
+/*   sort_tab_index.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 15:35:56 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/12 16:39:20 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/14 13:33:42 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*get_unique_values(s_list *la, int *length)
+int	*get_list_in_tab(t_list *la, int size_a)
 {
 	int		*tab;
-	s_list	*current;
+	t_list	*current;
 	int		i;
 
 	i = 0;
 	current = la;
-	*length = lst_size(&current);
-	tab = (int *)malloc(*length * sizeof(int));
+	tab = (int *)malloc(size_a * sizeof(int));
 	if (!tab)
 		return (NULL);
-	// Remplir le tableau avec des valeurs uniques
 	current = la;
-	for (i = 0; i < *length; i++)
+	while (i < size_a)
 	{
 		tab[i] = current->nb;
 		current = current->next;
+		i++;
 	}
 	return (tab);
 }
@@ -58,18 +57,18 @@ void	sort_int_tab(int *tab, int size)
 	}
 }
 
-void	assign_indices(s_list *la, int *sorted_values, int length)
+void	assign_indices(t_list *la, int *sort_tab, int size)
 {
-	s_list	*current;
+	t_list	*current;
 	int		i;
 
 	current = la;
 	while (current)
 	{
 		i = 0;
-		while (i < length)
+		while (i < size)
 		{
-			if (current->nb == sorted_values[i])
+			if (current->nb == sort_tab[i])
 			{
 				current->s_index = i;
 				break ;
@@ -78,17 +77,18 @@ void	assign_indices(s_list *la, int *sorted_values, int length)
 		}
 		current = current->next;
 	}
-	free(sorted_values);
+	free(sort_tab);
 }
 
-void	put_index(s_list **la)
+void	put_index(t_list **la)
 {
 	int	size;
-	int	*sorted_values;
+	int	*tab;
 
-	sorted_values = get_unique_values(*la, &size);
-	if (!sorted_values)
+	size = lst_size(la);
+	tab = get_list_in_tab(*la, size);
+	if (!tab)
 		return ;
-	sort_int_tab(sorted_values, size);
-	assign_indices(*la, sorted_values, size);
+	sort_int_tab(tab, size);
+	assign_indices(*la, tab, size);
 }

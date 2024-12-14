@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:06:03 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/10 11:46:23 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/14 12:29:14 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	check_error2(char **tab)
 	while (tab[i] != NULL)
 	{
 		j = ft_strlen(tab[i]);
-		if (ft_atoi_max(tab[i]) == 0 && tab[i][j - 1] != '0')
+		if (ft_atoi_max(tab[i]) == 0 && tab[i][j] != '\0')
 			return (1);
 		i++;
 	}

@@ -6,17 +6,17 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:14:34 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/11 15:53:59 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/14 14:49:03 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-s_list	*ft_lstnew(int n)
+t_list	*ft_lstnew(int n)
 {
-	s_list	*new;
+	t_list	*new;
 
-	new = malloc(1 * sizeof(s_list));
+	new = malloc(1 * sizeof(t_list));
 	if (!new)
 		return (NULL);
 	new->nb = n;
@@ -24,10 +24,10 @@ s_list	*ft_lstnew(int n)
 	return (new);
 }
 
-void	ft_lstadd_back(s_list **lst, int n)
+void	ft_lstadd_back(t_list **lst, int n)
 {
-	s_list	*tmp;
-	s_list	*new;
+	t_list	*tmp;
+	t_list	*new;
 
 	new = ft_lstnew(n);
 	if (!new)
@@ -41,17 +41,9 @@ void	ft_lstadd_back(s_list **lst, int n)
 	tmp->next = new;
 }
 
-void	ft_lstadd_front(s_list **lst, s_list *new)
+void	ft_lstclear(t_list **lst)
 {
-	if (!new)
-		return ;
-	new->next = *lst;
-	*lst = new;
-}
-
-void	ft_lstclear(s_list **lst)
-{
-	s_list	*tmp;
+	t_list	*tmp;
 
 	tmp = NULL;
 	while (*lst)
@@ -62,3 +54,28 @@ void	ft_lstclear(s_list **lst)
 		*lst = tmp;
 	}
 }
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (!(lst))
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}
+
+int	lst_size(t_list **begin_list)
+{
+	int		size;
+	t_list	*current;
+
+	size = 0;
+	current = *begin_list;
+	while (current)
+	{
+		size++;
+		current = current->next;
+	}
+	return (size);
+}
+

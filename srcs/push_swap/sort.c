@@ -6,11 +6,38 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 12:47:42 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/12 16:45:15 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/14 14:48:37 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	sort_three(t_list **begin_list)
+{
+	int	a;
+	int	b;
+	int	c;
+
+	a = (*begin_list)->nb;
+	b = (*begin_list)->next->nb;
+	c = (*begin_list)->next->next->nb;
+	if (a > b && b < c && a < c)
+		sa(begin_list);
+	else if (a > b && b > c)
+	{
+		sa(begin_list);
+		rra(begin_list);
+	}
+	else if (a > b && b < c && a > c)
+		ra(begin_list);
+	else if (a < b && b > c && a < c)
+	{
+		sa(begin_list);
+		ra(begin_list);
+	}
+	else if (a < b && b > c && a > c)
+		rra(begin_list);
+}
 
 int	ft_sqrt(int number)
 {
@@ -29,7 +56,7 @@ int	ft_sqrt(int number)
 	return (i - 1);
 }
 
-int	count_rotation(s_list *stack, int index)
+int	count_rotation(t_list *stack, int index)
 {
 	int	counter;
 
@@ -42,51 +69,51 @@ int	count_rotation(s_list *stack, int index)
 	return (counter);
 }
 
-void	k_sort1(s_list **la, s_list **lb, int length)
+void	k_sort1(t_list **la, t_list **lb, int size_a)
 {
-	int	i;
+	int	size_b;
 	int	range;
 
-	i = 0;
-	range = ft_sqrt(length) * 14 / 10;
+	size_b = 0;
+	range = ft_sqrt(size_a) * 1.35;
 	while (*la)
 	{
-		if ((*la)->s_index <= i)
+		if ((*la)->s_index <= size_b)
 		{
 			pb(la, lb);
 			rb(lb);
-			i++;
+			size_b++;
 		}
-		else if ((*la)->s_index <= i + range)
+		else if ((*la)->s_index <= size_b + range)
 		{
 			pb(la, lb);
-			i++;
+			size_b++;
 		}
 		else
 			ra(la);
 	}
 }
 
-void	k_sort2(s_list **la, s_list **lb, int length)
+void	k_sort2(t_list **la, t_list **lb, int size_b)
 {
 	int	rb_count;
 	int	rrb_count;
 
-	while (length - 1 >= 0)
+	while (size_b - 1 >= 0)
 	{
-		rb_count = count_rotation(*lb, length - 1);
-		rrb_count = (length + 3) - rb_count;
+		rb_count = count_rotation(*lb, size_b - 1);
+		rrb_count = (size_b + 3) - rb_count;
 		if (rb_count <= rrb_count)
 		{
-			while ((*lb)->s_index != length - 1)
+			while ((*lb)->s_index != size_b - 1)
 				rb(lb);
 		}
 		else
 		{
-			while ((*lb)->s_index != length - 1)
+			while ((*lb)->s_index != size_b - 1)
 				rrb(lb);
 		}
 		pa(la, lb);
-		length--;
+		size_b--;
 	}
 }

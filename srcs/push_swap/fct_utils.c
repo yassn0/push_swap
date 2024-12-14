@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 16:10:39 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/12 16:49:15 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/14 13:09:18 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ int	ft_atoi_max(const char *str)
 		return (0);
 	if ((sign) == -1)
 		return (-somme);
-	return ((int)somme);
+	return (somme);
 }
 
-void	sort_two_or_one(s_list **la)
+void	sort_two_or_one(t_list **la)
 {
 	if (is_sorted(la))
 		return ;
@@ -49,7 +49,7 @@ void	sort_two_or_one(s_list **la)
 		sa(la);
 }
 
-void	free_all(char **split, s_list **la)
+void	free_all(char **split, t_list **la)
 {
 	if (la)
 	{
@@ -58,7 +58,7 @@ void	free_all(char **split, s_list **la)
 	}
 }
 
-int	special_case(s_list **la, char **split)
+int	special_case(t_list **la, char **split)
 {
 	if (is_sorted(la))
 	{

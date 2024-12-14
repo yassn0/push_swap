@@ -6,16 +6,16 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:31:44 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/11 14:53:55 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/14 13:06:38 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(s_list **begin_la)
+void	sa(t_list **begin_la)
 {
 	int		tmp;
-	s_list	*lst;
+	t_list	*lst;
 
 	lst = *begin_la;
 	if (!lst || !(lst->next))
@@ -26,10 +26,10 @@ void	sa(s_list **begin_la)
 	ft_printf("sa\n");
 }
 
-void	sb(s_list **begin_lb)
+void	sb(t_list **begin_lb)
 {
 	int		tmp;
-	s_list	*lst;
+	t_list	*lst;
 
 	lst = *begin_lb;
 	if (!lst || !(lst->next))
@@ -40,9 +40,9 @@ void	sb(s_list **begin_lb)
 	ft_printf("sb\n");
 }
 
-void	pa(s_list **la, s_list **lb)
+void	pa(t_list **la, t_list **lb)
 {
-	s_list	*temp;
+	t_list	*temp;
 
 	if (*lb == NULL)
 		return ;
@@ -61,9 +61,9 @@ void	pa(s_list **la, s_list **lb)
 	ft_printf("pa\n");
 }
 
-void	pb(s_list **la, s_list **lb)
+void	pb(t_list **la, t_list **lb)
 {
-	s_list	*temp;
+	t_list	*temp;
 
 	if (*la == NULL)
 		return ;
@@ -74,7 +74,7 @@ void	pb(s_list **la, s_list **lb)
 	ft_printf("pb\n");
 }
 
-void	rr(s_list **la, s_list **lb)
+void	rr(t_list **la, t_list **lb)
 {
 	ra_no_comment(la);
 	rb_no_comment(lb);

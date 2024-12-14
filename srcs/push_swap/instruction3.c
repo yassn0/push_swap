@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instruction2.c                                     :+:      :+:    :+:   */
+/*   instruction3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 15:30:28 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/11 14:54:24 by yfradj           ###   ########.fr       */
+/*   Created: 2024/12/11 14:55:07 by yfradj            #+#    #+#             */
+/*   Updated: 2024/12/14 13:10:09 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(s_list **begin_la)
+void	ra_no_comment(t_list **begin_la)
 {
-	s_list	*tmp;
-	s_list	*end;
+	t_list	*tmp;
+	t_list	*end;
 
 	if (!begin_la || !(*begin_la) || !((*begin_la)->next))
 		return ;
@@ -24,13 +24,12 @@ void	ra(s_list **begin_la)
 	end->next = *begin_la;
 	(*begin_la)->next = NULL;
 	*begin_la = tmp;
-	ft_printf("ra\n");
 }
 
-void	rb(s_list **begin_lb)
+void	rb_no_comment(t_list **begin_lb)
 {
-	s_list	*first;
-	s_list	*last;
+	t_list	*first;
+	t_list	*last;
 
 	if (!(*begin_lb) || !(*begin_lb)->next)
 		return ;
@@ -41,13 +40,12 @@ void	rb(s_list **begin_lb)
 	*begin_lb = first->next;
 	first->next = NULL;
 	last->next = first;
-	ft_printf("rb\n");
 }
 
-void	rra(s_list **begin_la)
+void	rra_no_comment(t_list **begin_la)
 {
-	s_list	*lst;
-	s_list	*end;
+	t_list	*lst;
+	t_list	*end;
 
 	if (!begin_la || !(*begin_la) || !((*begin_la)->next))
 		return ;
@@ -58,14 +56,15 @@ void	rra(s_list **begin_la)
 	lst->next = NULL;
 	end->next = *begin_la;
 	*begin_la = end;
-	ft_printf("rra\n");
 }
 
-void	rrb(s_list **begin_lb)
+void	rrb_no_comment(t_list **begin_lb)
 {
-	s_list *prev = NULL;
-	s_list *current = *begin_lb;
+	t_list	*prev;
+	t_list	*current;
 
+	prev = NULL;
+	current = *begin_lb;
 	if (!(*begin_lb) || !(*begin_lb)->next)
 		return ;
 	while (current->next)
@@ -76,12 +75,4 @@ void	rrb(s_list **begin_lb)
 	prev->next = NULL;
 	current->next = *begin_lb;
 	*begin_lb = current;
-	ft_printf("rrb\n");
-}
-
-void	rrr(s_list **la, s_list **lb)
-{
-	rra_no_comment(la);
-	rrb_no_comment(lb);
-	ft_printf("rrr\n");
 }
