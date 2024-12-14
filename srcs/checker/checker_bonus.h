@@ -6,12 +6,12 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:45:43 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/14 16:13:58 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/14 17:09:38 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef CHECKER_BONUS_H
+# define CHECKER_BONUS_H
 
 # include "../../libft/libft.h"
 # include <fcntl.h>
@@ -66,7 +66,7 @@ void				sort_two_or_one(t_list **la);
 void				free_all(char **split, t_list **la);
 void				free_tab(char **tab);
 
-void	read_and_execute(t_list **la, t_list **lb);
-void	execute(t_list **la, t_list **lb, char *line);
+void				read_and_execute(t_list **la, t_list **lb);
+void				execute(t_list **la, t_list **lb, char *line);
 
 #endif

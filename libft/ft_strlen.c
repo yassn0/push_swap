@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:07:58 by yfradj            #+#    #+#             */
-/*   Updated: 2024/11/09 15:32:37 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/14 16:45:43 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@ int	ft_strlen(const char *str)
 	int	i;
 
 	i = 0;
+	if (!str || *str == '\0')
+		return (0);
 	while (str[i])
 		i++;
 	return (i);

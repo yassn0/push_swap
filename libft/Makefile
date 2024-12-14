@@ -1,8 +1,7 @@
-CC = gcc
+CC = cc
 FLAGS = -Wall -Wextra -Werror
 NAME = libft.a
 
-# Chemin pour vos fichiers .c
 SRCS = \
     ft_atoi.c \
     ft_bzero.c \

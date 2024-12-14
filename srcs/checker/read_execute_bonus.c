@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 15:34:28 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/14 16:59:06 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/14 17:12:15 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_strcmp(char *s1, char *s2)
 	i = 0;
 	if (!s1)
 		return (1);
-	if (!s2 )
+	if (!s2)
 		return (1);
 	while (s1[i] != '\0' && s2[i] != '\0')
 	{
@@ -65,10 +65,12 @@ void	read_and_execute(t_list **la, t_list **lb)
 {
 	char	*line;
 
-	while ((line = get_next_line(0)) != NULL)
+	line = get_next_line(0);
+	while (line != NULL)
 	{
 		execute(la, lb, line);
 		if (line)
 			free(line);
+		line = get_next_line(0);
 	}
 }

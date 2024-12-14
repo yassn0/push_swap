@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 16:10:39 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/14 16:24:21 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/14 17:12:37 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	ft_atoi_max(const char *str)
 	return (somme);
 }
 
-
 void	free_all(char **split, t_list **la)
 {
 	if (la)
@@ -50,4 +49,3 @@ void	free_all(char **split, t_list **la)
 		free_tab(split);
 	}
 }
-

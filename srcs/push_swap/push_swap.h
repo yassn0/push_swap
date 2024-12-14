@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 17:45:43 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/14 13:33:48 by yfradj           ###   ########.fr       */
+/*   Created: 2024/12/14 17:43:00 by yfradj            #+#    #+#             */
+/*   Updated: 2024/12/14 17:43:59 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft/libft.h"
+# include "../../libft/libft.h"
 # include <fcntl.h>
 # include <limits.h>
 # include <stdio.h>
@@ -38,7 +38,6 @@ void				ft_lstadd_back(t_list **lst, int n);
 void				ft_lstclear(t_list **lst);
 t_list				*ft_lstlast(t_list *lst);
 int					lst_size(t_list **begin_lst);
-// void				print_list(t_list **lst);
 
 char				**get_split(int ac, char **av);
 char				*create_str_for_split(int ac, char **av);
