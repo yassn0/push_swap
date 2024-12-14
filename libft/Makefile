@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/12/14 17:53:58 by yfradj            #+#    #+#              #
+#    Updated: 2024/12/14 17:57:29 by yfradj           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CC = cc
 FLAGS = -Wall -Wextra -Werror
 NAME = libft.a
@@ -69,20 +81,20 @@ OBJSB = $(SRCSB:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
-	ranlib $(NAME)
+	@ar rcs $(NAME) $(OBJS)
+	@ranlib $(NAME)
 
 .c.o:
-	$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
+	@$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
 
 bonus : $(OBJS) $(OBJSB)
-	ar rcs $(NAME) $(OBJS) $(OBJSB)
-	ranlib $(NAME)
+	@ar rcs $(NAME) $(OBJS) $(OBJSB)
+	@ranlib $(NAME)
 clean:
-	rm -f $(OBJS) $(OBJSB)
+	@rm -f $(OBJS) $(OBJSB)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 #    By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/26 16:34:27 by yfradj            #+#    #+#              #
-#    Updated: 2024/12/14 17:51:41 by yfradj           ###   ########.fr        #
+#    Updated: 2024/12/14 18:04:29 by yfradj           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,22 +48,22 @@ NAME_BONUS = checker
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	make -C libft
-	$(CC) $(OBJS) libft/libft.a -o $(NAME)
+	@make -C libft --no-print-directory
+	@$(CC) $(FLAGS) $(OBJS) libft/libft.a -o $(NAME)
 
 $(NAME_BONUS): $(OBJS_BONUS)
-	make -C libft
-	$(CC) $(OBJS_BONUS) libft/libft.a -o $(NAME_BONUS)
+	@make -C libft --no-print-directory
+	@$(CC)  $(FLAGS) $(OBJS_BONUS) libft/libft.a -o $(NAME_BONUS)
 
 bonus: $(NAME_BONUS)
 
 clean:
-	make clean -C libft
-	rm -f $(OBJS) $(OBJS_BONUS) 
+	@make clean -C libft --no-print-directory
+	@rm -f $(OBJS) $(OBJS_BONUS) 
 
 fclean: clean
-	make fclean -C libft
-	rm -f $(NAME) $(NAME_BONUS) 
+	@make fclean -C libft --no-print-directory
+	@rm -f $(NAME) $(NAME_BONUS) 
 	
 re: fclean all
 
