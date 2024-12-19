@@ -13,6 +13,39 @@ OK
 $>
 ```
 
+
+## Instructions
+
+To compile the project, run the `Makefile` in the terminal:
+
+```bash
+make
+
+    
+
+To clean up object files, run:
+
+make clean
+
+
+
+To remove all generated files, run:
+
+make fclean
+
+
+
+To compile the bonus:
+
+make bonus
+
+
+
+To recompile the project and the test executable, run:
+
+make re
+```
+
 ## Useful Links
 
 Push_Swap testers: 
