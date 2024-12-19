@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 17:43:00 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/14 17:43:59 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/16 14:05:19 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int					error(char **split);
 int					double_number(char **tab);
 int					check_error2(char **tab);
 int					check_error1(char **tab);
-int					ft_atoi_max(const char *str);
+long				ft_atoi_max(const char *str);
 
 t_list				*ft_lstnew(int n);
 void				ft_lstadd_back(t_list **lst, int n);
@@ -60,8 +60,9 @@ void				rrb_no_comment(t_list **begin_lb);
 
 int					is_sorted(t_list **begin_list);
 void				sort_three(t_list **begin_list);
+void				small_sort(t_list **la, t_list **lb);
 
-int					special_case(t_list **la, char **split);
+int					special_case(t_list **la, t_list **lb, char **split);
 void				sort_two_or_one(t_list **la);
 void				free_all(char **split, t_list **la);
 void				free_tab(char **tab);
@@ -72,8 +73,8 @@ void				assign_indices(t_list *la, int *sort_tab, int size);
 void				put_index(t_list **la);
 
 int					ft_sqrt(int nb);
-int					count_rotation(t_list *stack, int index);
-void				k_sort1(t_list **la, t_list **lb, int size_a);
-void				k_sort2(t_list **la, t_list **lb, int size);
+int					count_rotation(t_list *lb, int index);
+void				chunk_sort1(t_list **la, t_list **lb, int size_a);
+void				chunk_sort2(t_list **la, t_list **lb, int size);
 
 #endif

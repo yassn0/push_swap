@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:34:47 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/14 17:10:30 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/16 12:53:04 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	main(int ac, char **av)
 	la = create_list(split);
 	lb = NULL;
 	read_and_execute(&la, &lb);
-	if (is_sorted(&la))
+	if (is_sorted(&la) && lst_size(&la) >= 2)
 		ft_printf("OK");
 	else
 		ft_printf("KO");

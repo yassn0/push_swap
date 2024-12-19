@@ -6,76 +6,49 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 12:47:42 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/14 14:48:37 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/17 11:31:44 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_three(t_list **begin_list)
-{
-	int	a;
-	int	b;
-	int	c;
-
-	a = (*begin_list)->nb;
-	b = (*begin_list)->next->nb;
-	c = (*begin_list)->next->next->nb;
-	if (a > b && b < c && a < c)
-		sa(begin_list);
-	else if (a > b && b > c)
-	{
-		sa(begin_list);
-		rra(begin_list);
-	}
-	else if (a > b && b < c && a > c)
-		ra(begin_list);
-	else if (a < b && b > c && a < c)
-	{
-		sa(begin_list);
-		ra(begin_list);
-	}
-	else if (a < b && b > c && a > c)
-		rra(begin_list);
-}
-
-int	ft_sqrt(int number)
+int	ft_sqrt(int nb)
 {
 	int	i;
 
-	if (number < 4)
+	if (nb < 4)
 		return (1);
 	i = 2;
-	while (i * i < number)
+	while (i * i < nb)
 		i++;
-	if (i * i > number)
+	if (i * i > nb)
 	{
-		if ((i * i - number) < ((i - 1) * (i - 1) + (-number)))
+		if ((i * i - nb) < ((i - 1) * (i - 1) + (-nb)))
 			return (i);
 	}
 	return (i - 1);
 }
 
-int	count_rotation(t_list *stack, int index)
+int	count_rotation(t_list *lb, int index)
 {
-	int	counter;
+	int	count;
 
-	counter = 0;
-	while (stack && stack->s_index != index)
+	count = 0;
+	while (lb && lb->s_index != index)
 	{
-		stack = stack->next;
-		counter++;
+		lb = lb->next;
+		count++;
 	}
-	return (counter);
+	return (count);
 }
 
-void	k_sort1(t_list **la, t_list **lb, int size_a)
+void	chunk_sort1(t_list **la, t_list **lb, int size_a)
 {
 	int	size_b;
-	int	range;
+	int	range_chunk;
 
 	size_b = 0;
-	range = ft_sqrt(size_a) * 1.35;
+	range_chunk = ft_sqrt(size_a) * 1.35;
 	while (*la)
 	{
 		if ((*la)->s_index <= size_b)
@@ -84,7 +57,7 @@ void	k_sort1(t_list **la, t_list **lb, int size_a)
 			rb(lb);
 			size_b++;
 		}
-		else if ((*la)->s_index <= size_b + range)
+		else if ((*la)->s_index <= size_b + range_chunk)
 		{
 			pb(la, lb);
 			size_b++;
@@ -94,7 +67,7 @@ void	k_sort1(t_list **la, t_list **lb, int size_a)
 	}
 }
 
-void	k_sort2(t_list **la, t_list **lb, int size_b)
+void	chunk_sort2(t_list **la, t_list **lb, int size_b)
 {
 	int	rb_count;
 	int	rrb_count;
@@ -102,7 +75,7 @@ void	k_sort2(t_list **la, t_list **lb, int size_b)
 	while (size_b - 1 >= 0)
 	{
 		rb_count = count_rotation(*lb, size_b - 1);
-		rrb_count = (size_b + 3) - rb_count;
+		rrb_count = (size_b + 1) - rb_count;
 		if (rb_count <= rrb_count)
 		{
 			while ((*lb)->s_index != size_b - 1)

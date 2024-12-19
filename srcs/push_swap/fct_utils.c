@@ -6,13 +6,13 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 16:10:39 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/14 13:09:18 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/16 12:46:59 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi_max(const char *str)
+long	ft_atoi_max(const char *str)
 {
 	int		i;
 	int		sign;
@@ -35,7 +35,7 @@ int	ft_atoi_max(const char *str)
 		i++;
 	}
 	if (somme > INT_MAX || somme < INT_MIN)
-		return (0);
+		return (LONG_MIN);
 	if ((sign) == -1)
 		return (-somme);
 	return (somme);
@@ -58,7 +58,7 @@ void	free_all(char **split, t_list **la)
 	}
 }
 
-int	special_case(t_list **la, char **split)
+int	special_case(t_list **la, t_list **lb, char **split)
 {
 	if (is_sorted(la))
 	{
@@ -74,6 +74,12 @@ int	special_case(t_list **la, char **split)
 	if (lst_size(la) == 3)
 	{
 		sort_three(la);
+		free_all(split, la);
+		return (0);
+	}
+	if (lst_size(la) == 5)
+	{
+		small_sort(la, lb);
 		free_all(split, la);
 		return (0);
 	}

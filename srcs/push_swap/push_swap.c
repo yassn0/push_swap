@@ -6,23 +6,23 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:34:47 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/14 17:22:34 by yfradj           ###   ########.fr       */
+/*   Updated: 2024/12/19 12:55:55 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// void	print_list(t_list **lst)
-// {
-// 	t_list	*tmp;
+void	print_list(t_list **lst)
+{
+	t_list	*tmp;
 
-// 	tmp = *lst;
-// 	while (tmp)
-// 	{
-// 		ft_printf("%d\t", tmp->nb);
-// 		tmp = tmp->next;
-// 	}
-// }
+	tmp = *lst;
+	while (tmp)
+	{
+		ft_printf("%d\t", tmp->nb);
+		tmp = tmp->next;
+	}
+}
 
 int	is_sorted(t_list **begin_list)
 {
@@ -60,21 +60,22 @@ int	main(int ac, char **av)
 	char	**split;
 	int		size_a;
 
+	lb = NULL;
 	if (ac == 1)
 		exit(0);
 	split = get_split(ac, av);
 	if (!split)
 		exit(1);
-	if (check_error2(split) == 1 || check_error1(split) == 1
-		|| double_number(split) == 1)
+	if (check_error1(split) == 1 || double_number(split) == 1)
+		return (error(split));
+	if (check_error2(split) == 1)
 		return (error(split));
 	la = create_list(split);
-	if (special_case(&la, split) == 0)
-		return (0);
-	lb = NULL;
-	size_a = lst_size(&la);
 	put_index(&la);
-	k_sort1(&la, &lb, size_a);
-	k_sort2(&la, &lb, size_a);
+	if (special_case(&la, &lb, split) == 0)
+		return (0);
+	size_a = lst_size(&la);
+	chunk_sort1(&la, &lb, size_a);
+	chunk_sort2(&la, &lb, size_a);
 	free_all(split, &la);
 }

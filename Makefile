@@ -27,6 +27,7 @@ SRCS = \
 	$(WAY)lst_utils.c \
 	$(WAY)push_swap.c \
 	$(WAY)sort_tab_index.c \
+	$(WAY)sort_small_stack.c \
 	$(WAY)sort.c
 
 SRCS_BONUS = $(WAY_BONUS)arg_error_bonus.c \
